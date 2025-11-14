@@ -64,10 +64,37 @@ function cartaAleatoria() {
   return cartasRestantes.splice(indice, 1)[0];
 }
 
+function animarPalabrasPorPalabra(element, text, delay = 50, startDelay = 2000) {
+  const words = text.split(' ');
+  element.innerHTML = '';
+  
+  words.forEach((word, index) => {
+    const wordSpan = document.createElement('span');
+    wordSpan.className = 'word';
+    wordSpan.textContent = word;
+    wordSpan.style.animationDelay = `${startDelay + (index * delay)}ms`;
+    element.appendChild(wordSpan);
+  });
+}
+
 function mostrarCarta(carta) {
   const cardContainer = document.getElementById('card-container');
-  cardContainer.innerHTML = '';
   
+  // Aplicar fadeout a la carta actual si existe
+  const currentCard = cardContainer.querySelector('.card');
+  if (currentCard) {
+    currentCard.classList.add('fade-out');
+    setTimeout(() => {
+      cardContainer.innerHTML = '';
+      renderizarNuevaCarta(carta, cardContainer);
+    }, 500);
+  } else {
+    cardContainer.innerHTML = '';
+    renderizarNuevaCarta(carta, cardContainer);
+  }
+}
+
+function renderizarNuevaCarta(carta, cardContainer) {
   if (!carta) {
     const endScreen = document.createElement('div');
     endScreen.className = 'card end-screen';
@@ -108,10 +135,16 @@ function mostrarCarta(carta) {
     const contenido = document.createElement('div');
     contenido.className = 'card-content';
     
-    carta.contenido.forEach(item => {
+    let cumulativeDelay = 2000;
+    carta.contenido.forEach((item, itemIndex) => {
       const itemDiv = document.createElement('div');
       itemDiv.className = 'card-content-item';
-      itemDiv.textContent = item;
+      
+      animarPalabrasPorPalabra(itemDiv, item, 50, cumulativeDelay);
+      
+      const wordCount = item.split(' ').length;
+      cumulativeDelay += (wordCount * 50) + 200;
+      
       contenido.appendChild(itemDiv);
     });
     
