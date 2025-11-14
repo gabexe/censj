@@ -63,13 +63,14 @@ body {
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   line-height: 1.8;
   margin-bottom: 3rem;
-  color: #b0b0b0;
+  color: #e0e0e0;
   text-align: justify;
 }
 
 .disclaimer-buttons {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 1rem;
   width: 100%;
 }
@@ -77,8 +78,8 @@ body {
 .disclaimer-btn {
   font-family: 'Oranienbaum', serif;
   font-size: clamp(1rem, 2.5vw, 1.2rem);
-  padding: 1rem 2rem;
-  border: 2px solid #fff;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #a0a0a0;
   background: none;
   color: #fff;
   cursor: pointer;
