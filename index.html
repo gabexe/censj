@@ -12,11 +12,20 @@
 <body>
   <div id="container">
     <div id="inicio-screen">
-      <button id="start-btn" aria-label="Iniciar juego">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M8 5v14l11-7z"/>
-        </svg>
-      </button>
+      <div id="age-disclaimer">
+        <h1 class="disclaimer-title">Esto es un sitio para adultos</h1>
+        <p class="disclaimer-text">
+          Este sitio web contiene material restringido por edad, incluyendo contenido para adultos que puede ser explícito, fuerte o profundamente desagradable. Al ingresar, afirmas que tienes al menos 18 años de edad o la mayoría de edad en la jurisdicción desde la que accedes al sitio web y que das tu consentimiento para visualizar contenido que podría resultar ofensivo o perturbador para personas sensibles.
+        </p>
+        <div class="disclaimer-buttons">
+          <button id="enter-btn" class="disclaimer-btn enter-btn">
+            Soy mayor de 18 - Entrar
+          </button>
+          <button id="exit-btn" class="disclaimer-btn exit-btn">
+            Soy menor de 18 - Salir
+          </button>
+        </div>
+      </div>
     </div>
     <div id="game-screen" style="display:none;">
       <div id="card-container"></div>

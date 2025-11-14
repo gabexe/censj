@@ -155,11 +155,12 @@ function renderizarNuevaCarta(carta, cardContainer) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const startBtn = document.getElementById('start-btn');
+  const enterBtn = document.getElementById('enter-btn');
+  const exitBtn = document.getElementById('exit-btn');
   const inicioScreen = document.getElementById('inicio-screen');
   const gameScreen = document.getElementById('game-screen');
   
-  startBtn.addEventListener('click', async () => {
+  enterBtn.addEventListener('click', async () => {
     inicioScreen.style.display = 'none';
     gameScreen.style.display = 'flex';
     
@@ -171,6 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       mostrarError('No hay cartas disponibles.');
     }
+  });
+  
+  exitBtn.addEventListener('click', () => {
+    window.location.href = 'https://gabexe.github.io/';
   });
   
   // Evento para cambiar de carta al hacer click en cualquier parte de la página
