@@ -10,7 +10,7 @@
 /* ===== BASE ===== */
 body {
   font-family: 'Oranienbaum', serif;
-  background: #181818;
+  background: #000000;
   color: #fff;
   min-height: 100vh;
   height: 100vh;
@@ -80,7 +80,7 @@ body {
 
 /* ===== CARD ===== */
 .card {
-  background: #181818;
+  background: #000000;
   color: #fff;
   padding: 2rem;
   width: 100%;
