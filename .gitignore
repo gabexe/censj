@@ -1,0 +1,13 @@
+# Archivos temporales de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Archivo descifrado (no subir al repo)
+cartas.decrypted.json
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
