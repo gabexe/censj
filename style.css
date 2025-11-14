@@ -88,6 +88,8 @@ body {
   max-width: 100%;
   cursor: pointer;
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -96,6 +98,8 @@ body {
   animation: unfocusIn 0.8s ease-out forwards;
   overflow-y: auto;
   overflow-x: hidden;
+  transition: background-color 0.3s ease;
+  position: relative;
 }
 
 .card.fade-out {
@@ -104,7 +108,24 @@ body {
 }
 
 .card:active {
-  opacity: 0.9;
+  background-color: #0a0a0a;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.card:active::before {
+  opacity: 1;
 }
 
 /* Estilizar scrollbar para mejor apariencia */
@@ -169,6 +190,9 @@ body {
   opacity: 0;
   animation: fadeIn 0.6s ease-out forwards;
   line-height: 1.1;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .card-description {
@@ -179,6 +203,9 @@ body {
   line-height: 1.5;
   opacity: 0;
   animation: fadeIn 0.6s ease-out 1s forwards;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .card-content {
@@ -186,6 +213,9 @@ body {
   line-height: 1.8;
   opacity: 1;
   flex-grow: 1;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .card-content-item {

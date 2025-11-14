@@ -151,11 +151,6 @@ function renderizarNuevaCarta(carta, cardContainer) {
     cardElement.appendChild(contenido);
   }
   
-  cardElement.onclick = () => {
-    const siguienteCarta = cartaAleatoria();
-    mostrarCarta(siguienteCarta);
-  };
-  
   cardContainer.appendChild(cardElement);
 }
 
@@ -175,6 +170,19 @@ document.addEventListener('DOMContentLoaded', () => {
       mostrarCarta(primeraCarta);
     } else {
       mostrarError('No hay cartas disponibles.');
+    }
+  });
+  
+  // Evento para cambiar de carta al hacer click en cualquier parte de la página
+  gameScreen.addEventListener('click', (e) => {
+    // No hacer nada si es el botón de restart
+    if (e.target.closest('#restart-btn')) return;
+    
+    // Verificar que hay una carta activa (no end-screen)
+    const currentCard = gameScreen.querySelector('.card:not(.end-screen)');
+    if (currentCard && !currentCard.classList.contains('fade-out')) {
+      const siguienteCarta = cartaAleatoria();
+      mostrarCarta(siguienteCarta);
     }
   });
 });
