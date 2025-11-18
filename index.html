@@ -7,10 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="container">
+    <!-- Pantalla de disclaimer -->
     <div id="inicio-screen">
       <div id="age-disclaimer">
         <h1 class="disclaimer-title">Esto es un sitio para adultos</h1>
@@ -27,8 +29,104 @@
         </div>
       </div>
     </div>
+
+    <!-- Pantalla de configuración de jugadores -->
+    <div id="config-screen" style="display:none;">
+      <div id="player-config">
+        <h1 class="config-title">Configurar Juego</h1>
+        <div class="config-form">
+          <div class="form-group">
+            <input type="number" id="num-players" min="3" max="10" value="3" placeholder="Jugadores (3-10)">
+          </div>
+          <div id="players-names-container"></div>
+          <p id="config-error" class="config-error" style="display:none;"></p>
+          <button id="start-game-btn" class="config-btn">INICIAR</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pantalla de juego -->
     <div id="game-screen" style="display:none;">
       <div id="card-container"></div>
+      <div id="action-buttons" style="display:none;">
+        <!-- Botones principales (orden consistente) -->
+        <button id="aceptar-btn" class="action-btn"><i class="fas fa-check"></i></button>
+        <button id="rechazar-btn" class="action-btn"><i class="fas fa-times"></i></button>
+        <button id="seleccionar-ganador-btn" class="action-btn"><i class="fas fa-skull"></i></button>
+        <button id="seleccionar-perdedor-btn" class="action-btn pierde-btn"><i class="fas fa-user-times"></i></button>
+        <button id="robo-btn" class="action-btn robo-btn"><i class="fas fa-hand-holding"></i></button>
+        
+        <!-- Botones especiales -->
+        <button id="tirar-celular-btn" class="action-btn special-btn"><i class="fas fa-mobile-alt"></i></button>
+        <button id="robar-todas-btn" class="action-btn robo-btn"><i class="fas fa-hand-paper"></i></button>
+        <button id="apuesta-btn" class="action-btn apuesta-btn"><i class="fas fa-dice"></i></button>
+      </div>
+    </div>
+
+    <!-- Pantalla de victoria -->
+    <div id="victory-screen" style="display:none;">
+      <div id="victory-content">
+        <h1 class="victory-title">FIN DEL JUEGO</h1>
+        <div id="ranking-container"></div>
+        <button id="play-again-btn" class="config-btn">JUGAR DE NUEVO</button>
+      </div>
+    </div>
+
+    <!-- Panel inferior desplegable -->
+    <button id="toggle-panel-btn" class="panel-toggle-btn" style="display:none;"><i class="fas fa-info-circle"></i></button>
+    <div id="info-panel" class="info-panel">
+      <button id="close-panel-btn" class="close-panel-btn"><i class="fas fa-chevron-down"></i></button>
+      <div class="panel-content">
+        <div class="panel-section">
+          <h3>Turno Actual</h3>
+          <p id="current-turn-display" class="current-player"></p>
+        </div>
+        <div class="panel-section">
+          <h3>Cartas Restantes</h3>
+          <p id="cards-remaining-display" class="cards-count"></p>
+        </div>
+        <div class="panel-section">
+          <h3>Puntuaciones</h3>
+          <div id="scoreboard"></div>
+        </div>
+        <button id="abandon-game-btn" class="abandon-btn"><i class="fas fa-door-open"></i> SALIR</button>
+      </div>
+    </div>
+
+    <!-- Modal para selección de ganador en cartas grupales -->
+    <div id="winner-modal" class="modal" style="display:none;">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <h2 class="modal-title">¿Quién gana?</h2>
+        <div id="winner-selection"></div>
+      </div>
+    </div>
+
+    <!-- Modal para selección de ladrón -->
+    <div id="robo-modal" class="modal" style="display:none;">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <h2 class="modal-title">¿Quién te robó?</h2>
+        <div id="robo-selection"></div>
+      </div>
+    </div>
+
+    <!-- Modal para selección de perdedor -->
+    <div id="perdedor-modal" class="modal" style="display:none;">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <h2 class="modal-title">¿Quién pierde la partida?</h2>
+        <div id="perdedor-selection"></div>
+      </div>
+    </div>
+
+    <!-- Modal para robo automático (CARTA PALA) -->
+    <div id="robo-auto-modal" class="modal" style="display:none;">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <h2 class="modal-title">¿Quién agarró el celular?</h2>
+        <div id="robo-auto-selection"></div>
+      </div>
     </div>
   </div>
   <script src="main.js"></script>
